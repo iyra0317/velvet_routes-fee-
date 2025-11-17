@@ -1,0 +1,38 @@
+.dark-mode-toggle {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-full);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  color: var(--text-primary);
+}
+
+.dark-mode-toggle:hover {
+  background: var(--primary-50);
+  border-color: var(--primary-300);
+  transform: scale(1.1);
+}
+
+.dark-mode-toggle .icon {
+  font-size: 1.25rem;
+  transition: transform var(--transition-base);
+}
+
+.dark-mode-toggle:hover .icon {
+  transform: rotate(20deg);
+}
+
+.dark-mode .dark-mode-toggle {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+.dark-mode .dark-mode-toggle:hover {
+  background: var(--primary-900);
+  border-color: var(--primary-700);
+}

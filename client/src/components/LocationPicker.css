@@ -1,0 +1,38 @@
+.location-picker {
+  margin: 16px 0;
+}
+
+.location-picker .btn {
+  width: 100%;
+}
+
+.spinner-sm {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #e5e7eb;
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.location-display {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+}
+
+.location-icon {
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.location-text {
+  color: #166534;
+  font-size: 14px;
+  margin: 0;
+}

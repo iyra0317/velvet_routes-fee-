@@ -1,0 +1,38 @@
+.create-trip-page {
+  min-height: calc(100vh - 64px);
+  padding: 40px 20px;
+}
+
+.create-trip-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.create-trip-container h1 {
+  font-size: 36px;
+  color: #1f2937;
+  margin-bottom: 32px;
+}
+
+.create-trip-container .card {
+  padding: 32px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

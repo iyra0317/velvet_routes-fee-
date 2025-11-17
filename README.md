@@ -1,76 +1,52 @@
-# 🌍 Velvet Routes - Travel Booking Platform
+# 🌍 VelvetRoutes - Travel Booking Platform
 
-A comprehensive travel booking website with hotels, flights, cars, trains, buses, and mobile notifications.
-
-## 👥 Team Members
-
-- **Manleen** - Team Lead 👑
-- **Iyra** - Backend Developer ⚙️
-- **Neeti** - UI/UX Designer 🎨
-- **Eknoor** - Website Management 📊
+A comprehensive travel booking platform with a beautiful modern UI, complete database integration, and multi-provider support for hotels, flights, cars, trains, and buses.
 
 ## ✨ Features
 
-### Booking Services
-- 🏨 **Hotels** - Worldwide hotel search via Booking.com API
-- ✈️ **Flights** - Real flight data via Sky Scrapper API
-- 🚗 **Cars** - Car rentals worldwide via Booking.com API
-- 🚂 **Trains** - Train booking system
-- 🚌 **Buses** - Bus booking system
-
-### User Features
-- 💳 **Payments** - Stripe integration
-- 📧 **Email Invoices** - Automatic PDF invoices
-- 📱 **Mobile Notifications** - Browser push, SMS, WhatsApp
-- 🌙 **Dark Mode** - Full dark theme support
-- 🔐 **Authentication** - User accounts and trip management
-- 📊 **Dashboard** - Manage your bookings and trips
+- 🎨 **Beautiful Profile Page** - Modern gradient design with glassmorphism effects
+- 💾 **PostgreSQL Database** - Complete integration with Prisma ORM
+- 🔐 **Secure Authentication** - JWT-based authentication with bcrypt password hashing
+- 📊 **User Statistics** - Track bookings, spending, and travel history
+- 🏨 **Multi-Provider Support** - Hotels, flights, cars, trains, and buses
+- 💳 **Payment Processing** - Stripe integration ready
+- 📧 **Multi-Channel Notifications** - Email, SMS, WhatsApp, Push
+- ⭐ **Reviews & Ratings** - User feedback system
+- 📱 **Fully Responsive** - Works on all devices
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
 
-### Installation
+- Node.js 18+
+- MySQL 8.0+ (or PostgreSQL 14+)
+- npm
 
-1. **Clone the repository**
+### Installation (3 Steps)
+
 ```bash
-git clone https://github.com/iyra0317/velvet_routes-FEE-.git
-cd velvet_routes-FEE-
+# 1. Install all dependencies
+install-all.bat
+
+# 2. Configure database
+# Edit .env file and set your DATABASE_URL
+# DATABASE_URL="mysql://root:YOUR_PASSWORD@localhost:3306/velvetroutes"
+# See MYSQL_SETUP.md for detailed MySQL setup instructions
+
+# 3. Setup database
+npm run db:generate
+npm run db:migrate
+npm run db:seed
 ```
 
-2. **Install dependencies**
+### Start Application
+
 ```bash
-# Install backend dependencies
-npm install
-
-# Install frontend dependencies
-cd client
-npm install
-cd ..
-```
-
-3. **Configure environment variables**
-
-Edit `.env` file and add your API keys:
-```env
-# Required
-RAPIDAPI_KEY=your_rapidapi_key_here
-STRIPE_SECRET_KEY=your_stripe_key_here
-
-# Optional
-TWILIO_ACCOUNT_SID=your_twilio_sid
-TWILIO_AUTH_TOKEN=your_twilio_token
-TWILIO_PHONE_NUMBER=your_phone_number
-```
-
-4. **Start the application**
-```bash
-# Windows
 start.bat
+```
 
-# Or manually
+Or manually:
+```bash
 # Terminal 1 - Backend
 npm run server
 
@@ -79,186 +55,336 @@ cd client
 npm start
 ```
 
-5. **Open your browser**
-- Frontend: http://localhost:3000
-- Backend: http://localhost:5000
+### Access
 
-## 📚 Getting API Keys
+- **Frontend:** http://localhost:3000
+- **Backend:** http://localhost:5000
+- **Database GUI:** `npm run db:studio`
 
-### RapidAPI (Hotels, Cars, Flights)
-1. Go to https://rapidapi.com
-2. Sign up for free account
-3. Subscribe to:
-   - Booking.com API (Hotels & Cars)
-   - Sky Scrapper API (Flights)
-4. Copy your API key
-
-### Stripe (Payments)
-1. Go to https://stripe.com
-2. Sign up for account
-3. Get test API keys from dashboard
-
-### Twilio (SMS/WhatsApp) - Optional
-1. Go to https://twilio.com/try-twilio
-2. Sign up for free trial ($15 credit)
-3. Get Account SID, Auth Token, and Phone Number
-
-See `GET_API_KEYS_NOW.md` for detailed instructions.
-
-## 🎨 Tech Stack
-
-### Frontend
-- React
-- React Router
-- Axios
-- Stripe React
-
-### Backend
-- Node.js
-- Express
-- JWT Authentication
-- Nodemailer
-- PDFKit
-- Twilio
-- Web Push
-
-### APIs
-- RapidAPI (Hotels, Cars, Flights)
-- Stripe (Payments)
-- Twilio (SMS, WhatsApp)
-
-## 📂 Project Structure
+### Test Account
 
 ```
-velvet-routes/
+Email: john.doe@example.com
+Password: password123
+```
+
+## 📁 Project Structure
+
+```
+velvetroutes/
 ├── client/                 # React frontend
 │   ├── src/
-│   │   ├── components/    # Reusable components
-│   │   ├── pages/         # Page components
-│   │   ├── context/       # React context
-│   │   └── App.js
-│   └── public/
-│       └── sw.js          # Service worker
-├── server/                # Node.js backend
-│   ├── routes/           # API routes
-│   ├── services/         # Business logic
-│   └── middleware/       # Auth middleware
-├── .env                  # Environment variables
-├── package.json          # Backend dependencies
-└── start.bat            # Quick start script
+│   │   ├── pages/
+│   │   │   ├── Profile.js  # ⭐ Beautiful profile page
+│   │   │   └── ...
+│   │   └── components/
+│   └── package.json
+├── server/                 # Express backend
+│   ├── routes/
+│   │   ├── auth-prisma.js  # ⭐ Prisma-integrated auth
+│   │   └── ...
+│   ├── services/
+│   └── index.js
+├── prisma/                 # Database
+│   ├── schema.prisma       # ⭐ Database schema
+│   ├── seed.ts             # Sample data
+│   └── migrations/
+├── .env                    # Environment variables
+└── package.json
+```
+
+## 🗄️ Database Schema
+
+### Core Tables (20+)
+
+- **users** - User accounts with authentication
+- **profiles** - Extended user information and preferences
+- **providers** - External API providers (Booking.com, etc.)
+- **inventory_items** - Unified travel products
+- **hotels, flights, cars, trains, buses** - Specific travel details
+- **bookings** - User reservations
+- **payments** - Payment transactions (Stripe)
+- **invoices** - Generated invoices
+- **reviews** - User ratings and feedback
+- **notifications** - Multi-channel notifications
+- **audit_logs** - Complete activity tracking
+
+## 🎨 Profile Page Features
+
+### Design
+- Modern gradient background (purple/blue)
+- Glassmorphism cards with backdrop blur
+- Smooth animations and transitions
+- Fully responsive design
+
+### Functionality
+- **Personal Info Tab:** Name, email, phone, address, date of birth
+- **Travel Preferences Tab:** Travel class, dietary restrictions, accessibility
+- **Security Tab:** Password management, 2FA, session control
+- **Statistics Dashboard:** Total bookings, spending, countries visited
+
+## 🔌 API Endpoints
+
+### Authentication
+```
+POST   /api/auth/register          - Register new user
+POST   /api/auth/login             - Login
+GET    /api/auth/profile           - Get user profile
+PUT    /api/auth/profile           - Update profile
+GET    /api/auth/stats             - Get user statistics
+```
+
+### Bookings
+```
+POST   /api/bookings               - Create booking
+GET    /api/bookings/:id           - Get booking details
+GET    /api/bookings/user/:userId  - Get user bookings
+POST   /api/bookings/:id/cancel    - Cancel booking
+POST   /api/bookings/search        - Search inventory
+```
+
+### Inventory
+```
+GET    /api/hotels                 - List hotels
+GET    /api/flights                - List flights
+GET    /api/cars                   - List cars
+GET    /api/trains                 - List trains
+GET    /api/buses                  - List buses
+```
+
+## 🛠️ Available Scripts
+
+### Database
+```bash
+npm run db:generate    # Generate Prisma Client
+npm run db:migrate     # Run migrations
+npm run db:seed        # Add sample data
+npm run db:studio      # Open database GUI
+npm run db:reset       # Reset database (⚠️ deletes data)
+```
+
+### Application
+```bash
+npm run server         # Start backend
+npm run client         # Start frontend (from client folder)
+start.bat              # Start both (Windows)
+```
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+# Database
+DATABASE_URL="postgresql://postgres:password@localhost:5432/velvetroutes"
+
+# Server
+PORT=5000
+NODE_ENV=development
+
+# JWT
+JWT_SECRET=your_super_secret_jwt_key
+
+# Stripe (Optional)
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_PUBLISHABLE_KEY=pk_test_...
+
+# Twilio (Optional)
+TWILIO_ACCOUNT_SID=...
+TWILIO_AUTH_TOKEN=...
+
+# Email (Optional)
+SENDGRID_API_KEY=...
+EMAIL_FROM=noreply@velvetroutes.com
+
+# RapidAPI (Optional)
+RAPIDAPI_KEY=...
 ```
 
 ## 🧪 Testing
 
-### Test Hotels
-1. Go to http://localhost:3000/hotels
-2. Hotels load automatically
-3. Search: "Paris" or "Tokyo"
-4. Click "Book Now" on any hotel
+### Test Accounts
 
-### Test Flights
-1. Go to http://localhost:3000/flights
-2. Flights load automatically
-3. Search: "New York" → "London"
-4. Filter by price or stops
+After running `npm run db:seed`:
 
-### Test Cars
-1. Go to http://localhost:3000/cars
-2. Search: "Paris"
-3. Select dates
-4. Book a car
+```
+Admin:
+  Email: admin@velvetroutes.com
+  Password: admin123
 
-### Test Booking
-1. Book any hotel/flight/car
-2. Use test card: `4242 4242 4242 4242`
-3. Receive:
-   - Email with PDF invoice
-   - Browser notification
-   - SMS (if configured)
+User:
+  Email: john.doe@example.com
+  Password: password123
+```
 
-## 📱 Mobile Notifications
+### Sample Data
 
-### Browser Notifications (FREE - Works Immediately)
-1. Go to http://localhost:3000/dashboard
-2. Click "Enable Notifications"
-3. Allow browser permission
-4. Book something → Get notified!
-
-### SMS & WhatsApp (Optional)
-1. Sign up for Twilio free trial
-2. Add credentials to `.env`
-3. Restart server
-4. Add phone number in dashboard
-
-## 🌙 Dark Mode
-
-- Click the moon icon (🌙) in the navbar
-- Entire website switches to dark theme
-- Preference is saved automatically
-- Works on all pages
-
-## 📄 Pages
-
-- **Home** - Landing page with features
-- **Hotels** - Search and book hotels
-- **Flights** - Search and book flights
-- **Cars** - Rent cars
-- **Transport** - Trains and buses
-- **About** - Team information
-- **Dashboard** - Manage bookings
-- **Profile** - User settings
+The seed includes:
+- 2 users (admin + regular)
+- 3 hotels (Paris, Tokyo, NYC)
+- 3 flights (AA, BA, Delta)
+- 2 cars (Hertz, Avis)
+- 1 sample booking
+- 1 payment transaction
+- 1 review
+- 2 notifications
 
 ## 🔒 Security
 
-- JWT-based authentication
-- Bcrypt password hashing
-- Environment variable protection
-- Secure payment processing
+- ✅ Password hashing with bcrypt
+- ✅ JWT token authentication
+- ✅ Protected API routes
+- ✅ Input validation
+- ✅ SQL injection protection (Prisma)
+- ✅ CORS configuration
+- ✅ Environment variables for secrets
+
+## 📚 Documentation
+
+- **QUICK_START.md** - 10-minute setup guide
+- **SETUP_GUIDE.md** - Detailed setup instructions
+- **COMPLETE_SETUP.md** - Complete setup guide
+- **ARCHITECTURE.md** - System architecture
+- **VERIFICATION_CHECKLIST.md** - Testing checklist
+- **WHATS_NEW.md** - Changelog and new features
 
 ## 🐛 Troubleshooting
 
-**API not working?**
-- Check `.env` file has correct API keys
-- Verify RapidAPI subscription is active
-
-**Notifications not working?**
-- Browser: Allow notification permission
-- SMS: Verify Twilio credentials
-
-**Payment failing?**
-- Use test card: 4242 4242 4242 4242
-- Check Stripe key is correct
-
-## 📝 NPM Scripts
+### Database Connection Error
 
 ```bash
-npm run server          # Start backend only
-npm run client          # Start frontend only
-npm run dev            # Start both (concurrently)
-npm run install-all    # Install all dependencies
+# Check PostgreSQL is running
+pg_ctl status
+
+# Verify DATABASE_URL in .env
 ```
+
+### Port Already in Use
+
+```bash
+# Kill process on port 5000
+netstat -ano | findstr :5000
+taskkill /PID <PID> /F
+```
+
+### Prisma Client Error
+
+```bash
+npm run db:generate
+```
+
+### Migration Failed
+
+```bash
+npm run db:reset
+npm run db:migrate
+npm run db:seed
+```
+
+## 🚀 Technology Stack
+
+### Frontend
+- React 18
+- React Router
+- Axios
+- React Icons
+- CSS3 (Modern styling)
+
+### Backend
+- Node.js
+- Express 4
+- Prisma 5
+- JWT
+- bcrypt
+- TypeScript support
+
+### Database
+- MySQL 8.0+ (or PostgreSQL 14+)
+- Prisma Migrate
+- Prisma Studio
+
+### External Services (Optional)
+- Stripe - Payment processing
+- Twilio - SMS/WhatsApp
+- SendGrid - Email delivery
+- RapidAPI - Travel data providers
+
+## 📈 Performance
+
+- Database indexing for optimized queries
+- Connection pooling with Prisma
+- Lazy loading components
+- Optimized images
+- Production builds minified
+
+## 🎯 Use Cases
+
+### For Travelers
+1. Register and create profile
+2. Set travel preferences
+3. Search for hotels/flights/cars
+4. Make bookings
+5. Manage reservations
+6. Leave reviews
+7. Track spending
+
+### For Administrators
+1. Manage providers
+2. Monitor bookings
+3. Process payments
+4. Handle refunds
+5. View audit logs
+6. Manage inventory
 
 ## 🤝 Contributing
 
-This is a college project by:
-- Manleen (Team Lead)
-- Iyra (Backend Developer)
-- Neeti (UI/UX Designer)
-- Eknoor (Website Management)
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-ISC
+MIT License - feel free to use this project for learning or commercial purposes.
 
-## 🌟 Acknowledgments
+## 🆘 Support
 
-- RapidAPI for travel data
-- Stripe for payment processing
-- Twilio for notifications
-- All open-source libraries used
+If you encounter any issues:
+
+1. Check the documentation files
+2. Review error messages in console
+3. Verify environment variables
+4. Ensure PostgreSQL is running
+5. Check database connection with Prisma Studio
+
+## 🎉 Success Checklist
+
+Your setup is successful if:
+
+- ✅ Backend runs without errors
+- ✅ Frontend loads correctly
+- ✅ Can register and login
+- ✅ Profile page is beautiful and functional
+- ✅ Can edit and save profile
+- ✅ Statistics display correctly
+- ✅ Database is connected and working
+- ✅ All three profile tabs work
+
+## 🌟 Features Roadmap
+
+Coming soon:
+- [ ] Avatar upload
+- [ ] Password change functionality
+- [ ] Two-factor authentication
+- [ ] Email verification
+- [ ] Password reset
+- [ ] Social login (Google, Facebook)
+- [ ] Activity timeline
+- [ ] Export user data
 
 ---
 
-**Made with ❤️ by the Velvet Routes Team**
+**Built with ❤️ for travelers and developers**
 
-© 2024 Velvet Routes. All rights reserved.
+*Version 3.0.0 - November 2024*
+
+For detailed setup instructions, see **QUICK_START.md** or **SETUP_GUIDE.md**

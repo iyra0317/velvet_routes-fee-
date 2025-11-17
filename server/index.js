@@ -1,7 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const authRoutes = require('./routes/auth');
+const fs = require('fs');
+const path = require('path');
+
+// Check if Prisma routes exist, otherwise use regular routes
+const authPrismaPath = path.join(__dirname, 'routes', 'auth-prisma.js');
+const usePrisma = fs.existsSync(authPrismaPath);
+
+const authRoutes = usePrisma ? require('./routes/auth-prisma') : require('./routes/auth');
 const tripRoutes = require('./routes/trips');
 const hotelRoutes = require('./routes/hotels');
 const bookingRoutes = require('./routes/bookings');
@@ -34,6 +41,7 @@ app.get('/', (req, res) => {
   res.json({ 
     message: 'Velvet Routes API',
     version: '3.0',
+    database: usePrisma ? 'PostgreSQL (Prisma)' : 'In-Memory',
     endpoints: {
       auth: '/api/auth',
       trips: '/api/trips',
@@ -51,4 +59,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`✈️  Velvet Routes Server running on port ${PORT}`);
   console.log(`📍 API: http://localhost:${PORT}`);
+  console.log(`💾 Database: ${usePrisma ? 'PostgreSQL (Prisma)' : 'In-Memory'}`);
 });

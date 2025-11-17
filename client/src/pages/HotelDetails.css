@@ -1,0 +1,265 @@
+.hotel-details-page {
+  min-height: calc(100vh - 64px);
+  background: #f9fafb;
+}
+
+.hotel-header {
+  background: white;
+  padding: 32px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 16px;
+  font-size: 15px;
+  padding: 8px 0;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.hotel-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.hotel-header .hotel-location {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.hotel-rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rating-score {
+  background: #4f46e5;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.rating-stars {
+  font-size: 18px;
+}
+
+.rating-reviews {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.hotel-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+  padding: 40px 0;
+}
+
+.hotel-main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.hotel-gallery {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.hotel-section {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.hotel-section h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.hotel-section p {
+  color: #4b5563;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #374151;
+  font-size: 15px;
+}
+
+.amenity-icon {
+  color: #10b981;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.location-map {
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.text-secondary {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.hotel-sidebar {
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+}
+
+.booking-card {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.price-display {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.price-display .price-amount {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.price-display .price-period {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.price-breakdown {
+  margin: 20px 0;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.price-row.total {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  margin-bottom: 0;
+}
+
+.payment-section h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.booking-summary {
+  background: #f9fafb;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.booking-summary p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.booking-summary .total-amount {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+@media (max-width: 1024px) {
+  .hotel-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hotel-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .hotel-header h1 {
+    font-size: 28px;
+  }
+
+  .main-image {
+    height: 300px;
+  }
+
+  .hotel-section {
+    padding: 20px;
+  }
+
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
